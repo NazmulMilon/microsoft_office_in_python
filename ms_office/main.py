@@ -1,6 +1,7 @@
 import sys
 
 from PyQt5.QtWidgets import *
+from PyQt5.QtGui import *
 
 
 class MSWord(QMainWindow):
@@ -15,7 +16,7 @@ class MSWord(QMainWindow):
     def create_tool_bar(self):
         tool_bar = QToolBar()
 
-        undo_action = QAction('Undo', self)
+        undo_action = QAction(QIcon('undo.png'), 'Undo', self)
         undo_action.triggered.connect(self.editor.undo)
         tool_bar.addAction(undo_action)
 

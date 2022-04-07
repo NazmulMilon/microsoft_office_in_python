@@ -16,7 +16,7 @@ class MSWord(QMainWindow):
     def create_tool_bar(self):
         tool_bar = QToolBar()
 
-        undo_action = QAction(QIcon('undo.png'), 'Undo', self)
+        undo_action = QAction(QIcon('undo.png'), 'undo', self)
         undo_action.triggered.connect(self.editor.undo)
         tool_bar.addAction(undo_action)
 
@@ -27,6 +27,12 @@ class MSWord(QMainWindow):
         cut_action = QAction(QIcon('cut.png'), 'cut', self)
         cut_action.triggered.connect(self.editor.cut)
         tool_bar.addAction(cut_action)
+
+        copy_action = QAction(QIcon('copy.png'), 'copy', self)
+        copy_action.triggered.connect(self.editor.copy)
+        tool_bar.addAction(copy_action)
+
+
 
         self.addToolBar(tool_bar)
 

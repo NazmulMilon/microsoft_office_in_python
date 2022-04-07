@@ -13,6 +13,15 @@ class MSWord(QMainWindow):
         self.editor.setFontPointSize(20)
         self.font_size_box = QSpinBox()
         self.create_tool_bar()
+        self.create_menu_bar()
+
+    def create_menu_bar(self):
+        menu_bar = QMenuBar()
+
+        file_menu = QMenu('File', self)
+        menu_bar.addMenu(file_menu)
+
+        self.setMenuBar(menu_bar)
 
     def create_tool_bar(self):
         tool_bar = QToolBar()

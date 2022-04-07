@@ -21,6 +21,10 @@ class MSWord(QMainWindow):
         file_menu = QMenu('File', self)
         menu_bar.addMenu(file_menu)
 
+        edit_menu = QMenu('Edit', self)
+        menu_bar.addMenu(edit_menu)
+
+
         self.setMenuBar(menu_bar)
 
     def create_tool_bar(self):

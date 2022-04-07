@@ -11,6 +11,7 @@ class MSWord(QMainWindow):
         self.setCentralWidget(self.editor)
         self.showMaximized()
         self.editor.setFontPointSize(20)
+        self.font_size_box = QSpinBox()
         self.create_tool_bar()
 
     def create_tool_bar(self):
@@ -39,9 +40,18 @@ class MSWord(QMainWindow):
         paste_action.triggered.connect(self.editor.paste)
         tool_bar.addAction(paste_action)
 
+        tool_bar.addSeparator()
+        tool_bar.addSeparator()
 
+        self.font_size_box.setValue(20)
+        self.font_size_box.valueChanged.connect(self.set_font_size)
+        tool_bar.addWidget(self.font_size_box)
 
         self.addToolBar(tool_bar)
+
+    def set_font_size(self):
+        value = self.font_size_box.value()
+        self.editor.setFontPointSize(value)
 
 
 app = QApplication(sys.argv)

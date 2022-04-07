@@ -24,6 +24,8 @@ class MSWord(QMainWindow):
         edit_menu = QMenu('Edit', self)
         menu_bar.addMenu(edit_menu)
 
+        view_menu = QMenu('View', self)
+        menu_bar.addMenu(view_menu)
 
         self.setMenuBar(menu_bar)
 

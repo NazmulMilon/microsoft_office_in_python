@@ -2,6 +2,7 @@ import sys
 
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
+from PyQt5.QtPrintSupport import *
 
 
 class MSWord(QMainWindow):
@@ -20,6 +21,10 @@ class MSWord(QMainWindow):
 
         file_menu = QMenu('File', self)
         menu_bar.addMenu(file_menu)
+
+        save_as_pdf_action = QAction('Save As PDF', self)
+        save_as_pdf_action.triggered.connect(self.save_as_pdf)
+        file_menu.addAction(save_as_pdf_action)
 
         edit_menu = QMenu('Edit', self)
         menu_bar.addMenu(edit_menu)
@@ -67,6 +72,14 @@ class MSWord(QMainWindow):
     def set_font_size(self):
         value = self.font_size_box.value()
         self.editor.setFontPointSize(value)
+
+    def save_as_pdf(self):
+        file_path, _ = QFileDialog.getSaveFileName(self, 'Save PDF', None, 'PDF File(*.pdf)')
+        printer = QPrinter(QPrinter.HighResolution)
+        printer.setOutputFormat(QPrinter.PdfFormat)
+        printer.setOutputFileName(file_path)
+        self.editor.document().print(printer)
+
 
 
 app = QApplication(sys.argv)
